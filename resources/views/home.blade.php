@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title>{{ $title }}</title>
   @vite('resources/css/app.css')
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -23,13 +23,13 @@
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                   aria-current="page">Home</a>
-                <a href="#"
+                <a href="/blog"
                   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
-                <a href="#"
+                <a href="/about"
                   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-                <a href="#"
+                <a href="/contact"
                   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
               </div>
             </div>
@@ -94,13 +94,13 @@
       <div x-show="isOpen" class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+          <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
             aria-current="page">Home</a>
-          <a href="#"
+          <a href="/blog"
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
-          <a href="#"
+          <a href="/about"
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-          <a href="#"
+          <a href="/contact"
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
         </div>
         <div class="border-t border-gray-700 pt-4 pb-3">
@@ -141,12 +141,22 @@
 
     <header class="bg-white shadow-sm">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Home Page</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $title }}</h1>
       </div>
     </header>
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <p>Welcome to my Home Page</p>
+        <p>Welcome to my {{ $title }}</p>
+
+        <div class="flex mt-3">
+          @for ($i = 1; $i <= 10; $i++)
+            @if ($i % 2 == 0)
+              <div class="w-8 h-8 bg-teal-500 text-white p-0 me-1 text-xs grid place-items-center rounded-md">
+                {{ $i }}
+              </div>
+            @endif
+          @endfor
+        </div>
       </div>
     </main>
   </div>
